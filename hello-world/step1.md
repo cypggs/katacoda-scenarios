@@ -2,7 +2,10 @@ This is your first step.
 
 ## Task
 
-This is an _example_ of creating a scenario and running a **command**
+检查 Kubernetes 集群
+使用前，检查 Kubernetes 集群状态：kubectl cluster-info{{execute}}
+
+如果集群未启动，请执行：launch.sh{{execute}}
 
 `echo 'Hello World'`{{execute}}
 
