@@ -5,8 +5,8 @@
   "time": "2 minutes",
   "details": {
     "steps": [{
-      "title": "Step 1 - Run Command",
-      "text": "step1.md"
+       "title": "Step 1 - 检查 Kubernetes 集群",
+       "text": "step1.md"
     }],
     "intro": {
       "text": "intro.md",
@@ -21,6 +21,6 @@
     "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nStart Kubernetes using `launch.sh`\u001b[m\r\n"
   },
   "backend": {
-    "imageid": "kubernetes-cluster"
+    "imageid": "kubernetes-cluster-running"
   }
 }
