@@ -18,3 +18,20 @@ kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.y
 访问：
 http://任意一个Worker节点的IP地址:32567/
 
+添加k8s快捷命令
+`cat >>  ~/.bashrc << EOF
+alias kg='kubectl get'
+alias kc='kubectl apply -f'
+alias ke='kubectl exec -it'
+alias kd='kubectl describe pods'
+alias kl='kubectl logs -f'
+alias ktmp='kubectl run -i --tty --image busybox dns-test --restart=Never --rm /bin/sh'
+EOF
+source ~/.bashrc`{{execute}}
+
+获取pods状态
+`kg pods -A`{{execute}}
+`kg svc -A`{{execute}}
+`kg ing -A`{{execute}}
+
+
