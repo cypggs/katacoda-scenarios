@@ -1,6 +1,6 @@
 {
-  "title": "Hello World Scenario",
-  "description": "Your First Scenario",
+  "title": "Hello World k8s",
+  "description": "k8s environment template from cypggs",
   "difficulty": "beginner",
   "time": "2 minutes",
   "details": {
