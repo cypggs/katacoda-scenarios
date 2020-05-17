@@ -15,8 +15,9 @@ kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.y
 `echo $(kubectl -n kube-system get secret $(kubectl -n kube-system get secret | grep kuboard-user | awk '{print $1}') -o go-template='{{.data.token}}' | base64 -d)
 `{{execute}}
 
-访问：
-http://任意一个Worker节点的IP地址:32567/
+访问：(must fangqiang maybe)
+右边点击终端添加，选择第三个任意端口访问，打开后输入32567端口，会自动调整到类似连接（需fangqiang）
+https://2886795294-32567-cykoria03.environments.katacoda.com/
 
 添加k8s快捷命令
 `cat >>  ~/.bashrc << EOF
