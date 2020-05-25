@@ -34,12 +34,15 @@ source ~/.bashrc`{{execute}}
 `kg pods -A`{{execute}}
 `kg svc -A`{{execute}}
 `kg ing -A`{{execute}}
+
 安装nfs
 `apt update && apt install nfs-kernel-server -y
 cat >> /etc/exports << EOF
 /root/nfs_root/ *(insecure,rw,sync,no_root_squash)
 EOF
 mkdir -p /root/nfs_root/
+systemctl restart nfs-kernel-server
+systemctl status nfs-kernel-server
 exportfs -r
 exportfs`{{execute}}
 
