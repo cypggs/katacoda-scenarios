@@ -37,8 +37,10 @@ source ~/.bashrc`{{execute}}
 
 安装nfs
 `apt update && apt install nfs-kernel-server -y
-cat >> /etc/exports << EOF
-/root/nfs_root/ *(insecure,rw,sync,no_root_squash)
+cat >> /etc/exports << EOF`{{execute}}
+
+启动nfs
+`/root/nfs_root/ *(insecure,rw,sync,no_root_squash)
 EOF
 mkdir -p /root/nfs_root/
 systemctl restart nfs-kernel-server
