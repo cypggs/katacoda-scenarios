@@ -34,5 +34,19 @@ source ~/.bashrc`{{execute}}
 `kg pods -A`{{execute}}
 `kg svc -A`{{execute}}
 `kg ing -A`{{execute}}
+安装nfs
+`apt update && apt install nfs-kernel-server -y
+cat >> /etc/exports << EOF
+/root/nfs_root/ *(insecure,rw,sync,no_root_squash)
+EOF
+mkdir -p /root/nfs_root/
+exportfs -r
+exportfs`{{execute}}
+
+安装https://kuboard.cn/learning/k8s-intermediate/persistent/nfs.html#%E5%9C%A8kuboard%E4%B8%AD%E5%88%9B%E5%BB%BA-nfs-%E5%AD%98%E5%82%A8%E7%B1%BB
+
+安装监控
+`kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kubernetes/pki/etcd/server.crt --from-file=/etc/kubernetes/pki/etcd/server.key`{{execute}}
+
 
 
