@@ -46,7 +46,8 @@ mkdir -p /root/nfs_root/
 systemctl restart nfs-kernel-server
 systemctl status nfs-kernel-server
 exportfs -r
-exportfs`{{execute}}
+exportfs
+showmount -e localhost`{{execute}}
 
 安装https://kuboard.cn/learning/k8s-intermediate/persistent/nfs.html#%E5%9C%A8kuboard%E4%B8%AD%E5%88%9B%E5%BB%BA-nfs-%E5%AD%98%E5%82%A8%E7%B1%BB
 
