@@ -72,7 +72,18 @@ https://kuboard.cn/learning/k8s-intermediate/persistent/nfs.html#%E5%9C%A8kuboar
 ### 安装监控
 `kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kubernetes/pki/etcd/server.crt --from-file=/etc/kubernetes/pki/etcd/server.key`{{execute}}
 
-## 安装helm
+### 安装helm
 `snap install helm --classic`{{execute}}
-
+`export PATH=/snap/bin:$PATH`{{execute}}
 `helm version`{{execute}}
+
+### 使用helm
+安装源
+`helm repo add stable https://kubernetes-charts.storage.googleapis.com`{{execute}}
+更新
+`helm repo update`{{execute}}
+显示可以安装的包
+`helm search repo stable`{{execute}}
+安装个wordpress博客试试
+`helm install stable/wordpress --generate-name`{{execute}}
+
