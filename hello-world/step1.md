@@ -1,3 +1,6 @@
+form cypggs 
+https://github.com/cypggs/katacoda-scenarios
+
 This is your first step.
 
 ## Task
@@ -11,7 +14,7 @@ kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.y
 `{{execute}}
 
 获取token
-# 如果您参考 www.kuboard.cn 提供的文档安装 Kuberenetes，可在第一个 Master 节点上执行此命令
+#如果您参考 www.kuboard.cn 提供的文档安装 Kuberenetes，可在第一个 Master 节点上执行此命令
 `echo $(kubectl -n kube-system get secret $(kubectl -n kube-system get secret | grep kuboard-user | awk '{print $1}') -o go-template='{{.data.token}}' | base64 -d)
 `{{execute}}
 
@@ -35,13 +38,15 @@ source ~/.bashrc`{{execute}}
 `kg svc -A`{{execute}}
 `kg ing -A`{{execute}}
 
-安装nfs
-`apt update && apt install nfs-kernel-server -y
-cat >> /etc/exports << EOF`{{execute}}
+#安装nfs
+`apt update && apt install nfs-kernel-server -y`{{execute}}
 
-启动nfs
-`/root/nfs_root/ *(insecure,rw,sync,no_root_squash)
-EOF
+#配置nfs
+`cat >> /etc/exports << EOF
+/root/nfs_root/ *(insecure,rw,sync,no_root_squash)
+EOF`{{execute}}
+
+#启动nfs
 mkdir -p /root/nfs_root/
 systemctl restart nfs-kernel-server
 systemctl status nfs-kernel-server
@@ -49,9 +54,10 @@ exportfs -r
 exportfs
 showmount -e localhost`{{execute}}
 
-安装https://kuboard.cn/learning/k8s-intermediate/persistent/nfs.html#%E5%9C%A8kuboard%E4%B8%AD%E5%88%9B%E5%BB%BA-nfs-%E5%AD%98%E5%82%A8%E7%B1%BB
+安装和创建
+https://kuboard.cn/learning/k8s-intermediate/persistent/nfs.html#%E5%9C%A8kuboard%E4%B8%AD%E5%88%9B%E5%BB%BA-nfs-%E5%AD%98%E5%82%A8%E7%B1%BB
 
-安装监控
+#安装监控
 `kubectl -n kube-system create secret generic etcd-certs --from-file=/etc/kubernetes/pki/etcd/server.crt --from-file=/etc/kubernetes/pki/etcd/server.key`{{execute}}
 
 
