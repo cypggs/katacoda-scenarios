@@ -1,7 +1,10 @@
 >*author:cypggs  
 mail:qcypggs@qq.com
+
 github:https://github.com/cypggs/katacoda-scenarios
+
 describe:学习k8s实验室
+
 belief:计算机科学毕竟是一门实践性的科学，动手实操才是学习的捷径！*
 
 ![Pandao editor.md](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png "Pandao editor.md")
@@ -17,7 +20,7 @@ belief:计算机科学毕竟是一门实践性的科学，动手实操才是学�
 ###部署[kuboard](https://kuboard.cn/ "kuboard")（一个类似k8s Dashboard但是远强大于它的工具）
 `kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
 `{{execute}}
-可选部署监控相关的
+部署监控相关的(可选)
 `kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
 `{{execute}}
 
