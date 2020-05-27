@@ -1,28 +1,37 @@
-form cypggs 
-https://github.com/cypggs/katacoda-scenarios
+>*author:cypggs  
+mail:qcypggs@qq.com
+github:https://github.com/cypggs/katacoda-scenarios
+describe:学习k8s实验室
+belief:计算机科学毕竟是一门实践性的科学，动手实操才是学习的捷径！*
 
-This is your first step.
+![Pandao editor.md](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png "Pandao editor.md")
+[http://www.mdeditor.com/](http://www.mdeditor.com/)
+
 
 ## Task
 
-检查 Kubernetes 集群
+###检查 Kubernetes 集群
+
 使用前，检查 Kubernetes 集群状态：`kubectl cluster-info`{{execute}}
 
-启动kuboard
+###部署[kuboard](https://kuboard.cn/ "kuboard")（一个类似k8s Dashboard但是远强大于它的工具）
 `kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
-kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
+`{{execute}}
+可选部署监控相关的
+`kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
 `{{execute}}
 
-获取token
-#如果您参考 www.kuboard.cn 提供的文档安装 Kuberenetes，可在第一个 Master 节点上执行此命令
+稍等片刻就会部署完成
+
+###获取k8s token用于登陆kuboard平台
 `echo $(kubectl -n kube-system get secret $(kubectl -n kube-system get secret | grep kuboard-user | awk '{print $1}') -o go-template='{{.data.token}}' | base64 -d)
 `{{execute}}
 
-访问：(must fangqiang maybe)
-右边点击终端添加，选择第三个任意端口访问，打开后输入32567端口，会自动调整到类似连接（需fangqiang）
-https://2886795294-32567-cykoria03.environments.katacoda.com/
+###访问页面：(国内需要翻墙)
+右边点击终端添加，选择 **SELECT PORT TO VIEW ON HOST 1**，打开后输入32567端口，会自动跳转到kuboard界面输入上面的token就可以登陆
 
-添加k8s快捷命令
+
+###添加k8s快捷命令，加快输入效率
 `cat >>  ~/.bashrc << EOF
 alias kg='kubectl get'
 alias kc='kubectl apply -f'
@@ -33,24 +42,27 @@ alias ktmp='kubectl run -i --tty --image busybox dns-test --restart=Never --rm /
 EOF
 source ~/.bashrc`{{execute}}
 
-获取pods状态
+如获取pods状态
 `kg pods -A`{{execute}}
 `kg svc -A`{{execute}}
 `kg ing -A`{{execute}}
 
-#安装nfs
+###ubuntu安装nfs
 `apt update && apt install nfs-kernel-server -y`{{execute}}
 
-#配置nfs
+###配置nfs
+
 `cat >> /etc/exports << EOF
 /root/nfs_root/ *(insecure,rw,sync,no_root_squash)
 EOF`{{execute}}
 
-#启动nfs
-mkdir -p /root/nfs_root/
+###启动nfs
+`mkdir -p /root/nfs_root/
 systemctl restart nfs-kernel-server
-systemctl status nfs-kernel-server
-exportfs -r
+systemctl status nfs-kernel-server`{{execute}}
+
+###验证nfs
+`exportfs -r
 exportfs
 showmount -e localhost`{{execute}}
 
