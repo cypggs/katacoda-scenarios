@@ -1,14 +1,11 @@
->*author:cypggs  
+>author:cypggs  
 >mail:qcypggs@qq.com
 >github:https://github.com/cypggs/katacoda-scenarios
 >describe:学习k8s实验室
->belief:计算机科学毕竟是一门实践性的科学，动手实操才是学习的捷径！*
+>belief:计算机科学毕竟是一门实践性的科学，动手实操才是学习的捷径！
 
 ![Pandao editor.md](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png "Pandao editor.md")
 [http://www.mdeditor.com/](http://www.mdeditor.com/)
-
-
-## Task
 
 ### 检查 Kubernetes 集群
 
@@ -74,12 +71,14 @@ https://kuboard.cn/learning/k8s-intermediate/persistent/nfs.html#%E5%9C%A8kuboar
 
 ### 安装helm3
 `snap install helm --classic`{{execute}}
-`export PATH=/snap/bin:$PATH`{{execute}}
-`helm version`{{execute}}
+
+`export PATH=/snap/bin:$PATH
+helm version`{{execute}}
 
 ### 使用helm
 安装源
 `helm repo add stable https://kubernetes-charts.storage.googleapis.com`{{execute}}
+
 更新
 `helm repo update`{{execute}}
 
