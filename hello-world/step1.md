@@ -87,3 +87,11 @@ https://kuboard.cn/learning/k8s-intermediate/persistent/nfs.html#%E5%9C%A8kuboar
 安装个wordpress博客试试
 `helm install stable/wordpress --generate-name`{{execute}}
 
+### helm安装skywalking
+#https://github.com/apache/skywalking-kubernetes/
+git clone https://github.com/apache/skywalking-kubernetes.git
+cd skywalking-kubernetes/chart
+helm repo add elastic https://helm.elastic.co
+helm dep up skywalking
+helm install sky skywalking 
+
