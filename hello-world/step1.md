@@ -97,5 +97,5 @@ helm dep up skywalking
 helm install sky skywalking`{{execute}}
 
 ### 安装 storageclass
-`kubectl apply -f https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/StorageClass-nfs.yaml
+`HOST_IP=$(hostname -i|xargs -n 1|grep -v 127.0.0.1)&& sed "s/NFS_IP/HOST_IP/g" https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/StorageClass-nfs.yaml |kubectl  apply -f - --record=true
 `{{execute}}
