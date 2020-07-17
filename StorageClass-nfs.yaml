@@ -28,7 +28,7 @@ spec:
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 172.17.0.44
+            server: NFS_IP
             path: /root/nfs_root
 ---
 apiVersion: v1
