@@ -67,8 +67,8 @@ data:
     client-output-buffer-limit pubsub 32mb 8mb 60
     hz 10
     aof-rewrite-incremental-fsync yes
- ---
- apiVersion: v1
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: redis-headless
@@ -188,4 +188,4 @@ spec:
       resources:
         requests:
           storage: 2Gi
-   #from https://mp.weixin.qq.com/s/iBwIqBsgc_Ow6oT3sqKKwg
+ #from https://mp.weixin.qq.com/s/iBwIqBsgc_Ow6oT3sqKKwg
