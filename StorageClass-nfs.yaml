@@ -22,7 +22,7 @@ spec:
             - name: PROVISIONER_NAME
               value: fuseim.pri/ifs
             - name: NFS_SERVER
-              value: 172.17.0.44
+              value: NFS_IP
             - name: NFS_PATH
               value: /root/nfs_root
       volumes:
