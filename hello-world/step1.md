@@ -106,9 +106,9 @@ helm install sky skywalking`{{execute}}
 ### 安装reids-sts
 
 `kubectl apply -f https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/redis-sts.yaml`{{execute}}
-
+# 登陆其中一台reids
 `kubectl exec -it redis-0 -- bash`{{execute}}
-
+# 建立集群
 `redis-trib.rb create --replicas 1 \
 `dig +short redis-0.redis-headless.default.svc.cluster.local`:6379 \
 `dig +short redis-1.redis-headless.default.svc.cluster.local`:6379 \
