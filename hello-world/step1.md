@@ -43,6 +43,8 @@ source ~/.bashrc`{{execute}}
 `kg pods -A`{{execute}}
 `kg svc -A`{{execute}}
 `kg ing -A`{{execute}}
+### 让master也当node调度
+`kubectl taint node controlplane node-role.kubernetes.io/master-`{{execute}}
 
 ### ubuntu安装nfs
 `apt update && apt install nfs-kernel-server -y`{{execute}}
