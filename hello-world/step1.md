@@ -96,6 +96,6 @@ helm repo add elastic https://helm.elastic.co
 helm dep up skywalking
 helm install sky skywalking`{{execute}}
 
-###安装 storageclass
+### 安装 storageclass
 `kubectl apply -f https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/StorageClass-nfs.yaml
 `{{execute}}
