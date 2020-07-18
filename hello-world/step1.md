@@ -109,30 +109,11 @@ helm install sky skywalking`{{execute}}
 # 登陆其中一台reids
 `kubectl exec -it redis-0 -- bash`{{execute}}
 # 建立集群
-`cat > ./redis-trib.sh << EOF
 `redis-trib.rb create --replicas 1 \
-`dig +short redis-0.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-1.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-2.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-3.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-4.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-5.redis-headless.default.svc.cluster.local`:6379`
+&#96;dig +short redis-0.redis-headless.default.svc.cluster.local&#96;:6379 \
+&#96;dig +short redis-1.redis-headless.default.svc.cluster.local&#96;:6379 \
+&#96;dig +short redis-2.redis-headless.default.svc.cluster.local&#96;:6379 \
+&#96;dig +short redis-3.redis-headless.default.svc.cluster.local&#96;:6379 \
+&#96;dig +short redis-4.redis-headless.default.svc.cluster.local&#96;:6379 \
+&#96;dig +short redis-5.redis-headless.default.svc.cluster.local&#96;:6379
 EOF`{{execute}}
-`sh ./redis-trib.sh `{{execute}}
-
-"redis-trib.rb create --replicas 1 \
-`dig +short redis-0.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-1.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-2.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-3.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-4.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-5.redis-headless.default.svc.cluster.local`:6379"
-
-
-redis-trib.rb create --replicas 1 \
-`dig +short redis-0.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-1.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-2.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-3.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-4.redis-headless.default.svc.cluster.local`:6379 \
-`dig +short redis-5.redis-headless.default.svc.cluster.local`:6379
