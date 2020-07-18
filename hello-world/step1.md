@@ -18,7 +18,7 @@
 `kubectl apply -f https://addons.kuboard.cn/metrics-server/0.3.6/metrics-server.yaml
 `{{execute}}
 
-稍等片刻就会部署完成
+稍等片刻就会部署完成^_^
 
 ### 获取k8s token用于登陆kuboard平台
 `echo $(kubectl -n kube-system get secret $(kubectl -n kube-system get secret | grep kuboard-user | awk '{print $1}') -o go-template='{{.data.token}}' | base64 -d)
