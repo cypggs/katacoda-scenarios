@@ -26,7 +26,8 @@
 
 ### 访问页面：(国内需要翻墙)
 右边点击终端添加，选择 **SELECT PORT TO VIEW ON HOST 1**，打开后输入32567端口，会自动跳转到kuboard界面输入上面的token就可以登陆
-
+https://[[HOST_SUBDOMAIN]]-[[KATACODA_HOST]].environments.katacoda.com/
+https://2886795281-32567-kitek05.environments.katacoda.com/
 
 ### 添加k8s快捷命令，加快输入效率
 `cat >>  ~/.bashrc << EOF
