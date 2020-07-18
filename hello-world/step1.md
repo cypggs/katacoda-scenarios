@@ -60,12 +60,31 @@ EOF`{{execute}}
 `mkdir -p /root/nfs_root/
 systemctl restart nfs-kernel-server
 systemctl status nfs-kernel-server`{{execute}}
-
+`^C`{{execute ctrl-seq}}
 ### 验证nfs
 `exportfs -r
 exportfs
 showmount -e localhost`{{execute}}
 
+### 安装 storageclass
+[[HOST_IP]]
+`wget https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/StorageClass-nfs.yaml && HOST_IP=$(hostname -i|xargs -n 1|grep -v 127.0.0.1)&& sed "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml |kubectl  apply -f - --record=true
+`{{execute}}
+`HOST_IP=$(hostname -i|xargs -n 1|grep -v 127.0.0.1)&& sed -i "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml `{{execute}}
+
+### 安装reids-sts
+
+`kubectl apply -f https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/redis-sts.yaml`{{execute}}
+# 登陆其中一台reids
+`kubectl exec -it redis-0 -- bash`{{execute}}
+# 建立集群
+`redis-trib.rb create --replicas 1 \
+\`dig +short redis-0.redis-headless.default.svc.cluster.local\`:6379 \
+\`dig +short redis-1.redis-headless.default.svc.cluster.local\`:6379 \
+\`dig +short redis-2.redis-headless.default.svc.cluster.local\`:6379 \
+\`dig +short redis-3.redis-headless.default.svc.cluster.local\`:6379 \
+\`dig +short redis-4.redis-headless.default.svc.cluster.local\`:6379 \
+\`dig +short redis-5.redis-headless.default.svc.cluster.local\`:6379`{{execute}}
 安装和创建
 https://kuboard.cn/learning/k8s-intermediate/persistent/nfs.html#%E5%9C%A8kuboard%E4%B8%AD%E5%88%9B%E5%BB%BA-nfs-%E5%AD%98%E5%82%A8%E7%B1%BB
 
@@ -98,22 +117,3 @@ cd skywalking-kubernetes/chart
 helm repo add elastic https://helm.elastic.co
 helm dep up skywalking
 helm install sky skywalking`{{execute}}
-
-### 安装 storageclass
-`wget https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/StorageClass-nfs.yaml && HOST_IP=$(hostname -i|xargs -n 1|grep -v 127.0.0.1)&& sed "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml |kubectl  apply -f - --record=true
-`{{execute}}
-`HOST_IP=$(hostname -i|xargs -n 1|grep -v 127.0.0.1)&& sed -i "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml `{{execute}}
-
-### 安装reids-sts
-
-`kubectl apply -f https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/redis-sts.yaml`{{execute}}
-# 登陆其中一台reids
-`kubectl exec -it redis-0 -- bash`{{execute}}
-# 建立集群
-`redis-trib.rb create --replicas 1 \
-\`dig +short redis-0.redis-headless.default.svc.cluster.local\`:6379 \
-\`dig +short redis-1.redis-headless.default.svc.cluster.local\`:6379 \
-\`dig +short redis-2.redis-headless.default.svc.cluster.local\`:6379 \
-\`dig +short redis-3.redis-headless.default.svc.cluster.local\`:6379 \
-\`dig +short redis-4.redis-headless.default.svc.cluster.local\`:6379 \
-\`dig +short redis-5.redis-headless.default.svc.cluster.local\`:6379`{{execute}}
