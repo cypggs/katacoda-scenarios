@@ -68,7 +68,8 @@ showmount -e localhost`{{execute}}
 
 ### 安装 storageclass
 [[HOST_IP]]
-`wget https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/StorageClass-nfs.yaml && HOST_IP=$(hostname -i|xargs -n 1|grep -v 127.0.0.1)&& sed "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml |kubectl  apply -f - --record=true
+HOST_IP = [[HOST_IP]]
+`wget https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/StorageClass-nfs.yaml && sed "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml |kubectl  apply -f - --record=true
 `{{execute}}
 `HOST_IP=$(hostname -i|xargs -n 1|grep -v 127.0.0.1)&& sed -i "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml `{{execute}}
 
