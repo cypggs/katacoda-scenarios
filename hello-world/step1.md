@@ -58,6 +58,7 @@ EOF`{{execute}}
 
 ### 启动nfs
 `mkdir -p /root/nfs_root/
+chmod -R 777 /root/nfs_root
 systemctl restart nfs-kernel-server
 systemctl status nfs-kernel-server`{{execute}}
 `^C`{{execute ctrl-seq}}
