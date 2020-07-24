@@ -68,11 +68,11 @@ exportfs
 showmount -e localhost`{{execute}}
 
 ### 安装 storageclass
-`HOST_IP=\`ifconfig ens3 |grep "inet addr"|cut -d: -f2|awk '{print $1}'\``{{execute}}
+`HOST_IP=$(ifconfig ens3 |grep "inet addr"|cut -d: -f2|awk '{print $1}')`{{execute}}
 
 `wget https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/StorageClass-nfs.yaml && sed "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml |kubectl  apply -f - --record=true`{{execute}}
 
-`HOST_IP=$(hostname -i|xargs -n 1|grep -v 127.0.0.1)&& sed -i "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml`{{execute}}
+`sed -i "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml`{{execute}}
 
 ### 安装reids-sts
 
