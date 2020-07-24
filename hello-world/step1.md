@@ -53,7 +53,7 @@ source ~/.bashrc`{{execute}}
 ### 配置nfs
 
 `cat >> /etc/exports << EOF
-/root/nfs_root/ *(insecure,rw,sync,no_root_squash)
+/root/nfs_root/ *(insecure,rw,sync,no_subtree_check)
 EOF`{{execute}}
 
 ### 启动nfs
