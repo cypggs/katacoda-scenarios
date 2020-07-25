@@ -75,6 +75,9 @@ mount -vvv -t nfs localhost:/root/nfs_root /mnt`{{execute}}
 `wget https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/StorageClass-nfs.yaml && sed "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml |kubectl  apply -f - --record=true`{{execute}}
 
 `sed -i "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml`{{execute}}
+###安装ocp-spring-cloud系统
+`kubectl create ns ocp
+kubectl apply -f https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/ocp.yaml`{{execute}}
 
 ### 安装reids-sts
 
