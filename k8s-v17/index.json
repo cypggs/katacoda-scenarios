@@ -21,6 +21,6 @@
     "uilayout": "terminal-terminal"
   },
   "backend": {
-    "imageid": "kubernetes-cluster-running:1.15"
+    "imageid": "kubernetes-master-centos7-1-16"
   }
 }
