@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: new-nginx
+  template:
+    metadata:
+      labels:
+        run: new-nginx
+    spec:
+      containers:
+      - image: registry.cn-hangzhou.aliyuncs.com/xianlu/new-nginx
+        imagePullPolicy: Always
+        name: new-nginx
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      restartPolicy: Always
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 0%
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: new-nginx
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: new-nginx
+  sessionAffinity: None
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: old-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: old-nginx
+  template:
+    metadata:
+      labels:
+        run: old-nginx
+    spec:
+      containers:
+      - image: registry.cn-hangzhou.aliyuncs.com/xianlu/old-nginx
+        imagePullPolicy: Always
+        name: old-nginx
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      restartPolicy: Always
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 25%
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: old-nginx
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: old-nginx
+  sessionAffinity: None
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gray-release-w
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "1"
+spec:
+  rules:
+  - host: nginx-test.tenserpay.xyz
+    http:
+      paths:
+      - backend:
+          serviceName: new-nginx
+          servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gray-release
+spec:
+  rules:
+  - host: nginx-test.tenserpay.xyz
+    http:
+      paths:
+      # 老版本服务
+      - path: /
+        backend:
+          serviceName: old-nginx
+          servicePort: 80
