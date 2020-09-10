@@ -146,7 +146,7 @@ spec:
   - metadata:
       name: www
       annotations:
-        volume.beta.kubernetes.io/storage-class: nfs-storage
+        volume.beta.kubernetes.io/storage-class: nfs-client
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
