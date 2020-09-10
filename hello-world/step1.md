@@ -118,4 +118,4 @@ helm dep up skywalking
 helm install sky skywalking`{{execute}}
 ###harbor
 `helm repo add harbor https://helm.goharbor.io
-helm install harbor harbor/harbor --set persistence.persistentVolumeClaim.registry.storageClass=nfs-client --set persistence.persistentVolumeClaim.chartmuseum.storageClass=nfs-client --set persistence.persistentVolumeClaim.jobservice.storageClass=nfs-client --set persistence.persistentVolumeClaim.database.storageClass=nfs-client --set persistence.persistentVolumeClaim.redis.storageClass=nfs-client --set persistence.persistentVolumeClaim.trivy.storageClass=nfs-client``{{execute}}
+helm install harbor harbor/harbor --set persistence.persistentVolumeClaim.registry.storageClass=nfs-client --set persistence.persistentVolumeClaim.chartmuseum.storageClass=nfs-client --set persistence.persistentVolumeClaim.jobservice.storageClass=nfs-client --set persistence.persistentVolumeClaim.database.storageClass=nfs-client --set persistence.persistentVolumeClaim.redis.storageClass=nfs-client --set persistence.persistentVolumeClaim.trivy.storageClass=nfs-client`{{execute}}
