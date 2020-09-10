@@ -24,12 +24,12 @@ spec:
             - name: NFS_SERVER
               value: NFS_IP
             - name: NFS_PATH
-              value: /data/nfs-client
+              value: /data/nfs_client
       volumes:
         - name: nfs-client-root
           nfs:
             server: NFS_IP
-            path: /data/nfs-client
+            path: /data/nfs_client
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -85,7 +85,7 @@ apiVersion: v1
 metadata:
   name: test-pvc
   annotations:
-    volume.beta.kubernetes.io/storage-class: "nfs-storage"
+    volume.beta.kubernetes.io/storage-class: "nfs-client"
 spec:
   accessModes:
   - ReadWriteMany

@@ -53,12 +53,12 @@ source ~/.bashrc`{{execute}}
 ### 配置nfs
 
 `cat >> /etc/exports << EOF
-/data/nfs-client *(rw,sync,no_root_squash,no_subtree_check)
+/data/nfs_client *(rw,sync,no_root_squash,no_subtree_check)
 EOF`{{execute}}
 
 ### 启动nfs
-`mkdir -p /data/nfs-client/
-chmod -R 777 /data/nfs-client
+`mkdir -p /data/nfs_client/
+chmod -R 777 /data/nfs_client
 /etc/init.d/rpcbind restart
 /etc/init.d/nfs-kernel-server restart
 systemctl status nfs-kernel-server`{{execute}}
@@ -67,7 +67,7 @@ systemctl status nfs-kernel-server`{{execute}}
 `exportfs -r
 exportfs
 showmount -e localhost
-mount -vvv -t nfs localhost:/data/nfs-client /mnt`{{execute}}
+mount -vvv -t nfs localhost:/data/nfs_client /mnt`{{execute}}
 
 ### 安装 storageclass
 `HOST_IP=$(ifconfig ens3 |grep "inet addr"|cut -d: -f2|awk '{print $1}')`{{execute}}
