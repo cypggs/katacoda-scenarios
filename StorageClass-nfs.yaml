@@ -24,12 +24,12 @@ spec:
             - name: NFS_SERVER
               value: NFS_IP
             - name: NFS_PATH
-              value: /root/nfs_root
+              value: /data/nfs-client
       volumes:
         - name: nfs-client-root
           nfs:
             server: NFS_IP
-            path: /root/nfs_root
+            path: /data/nfs-client
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -76,7 +76,7 @@ roleRef:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: nfs-storage
+  name: nfs-client
 provisioner: fuseim.pri/ifs # or choose another name, must match deployment's env PROVISIONER_NAME'
 ---
 #test pvc
@@ -126,7 +126,7 @@ metadata:
   name: nfs-web
 spec:
   serviceName: "nginx"
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
