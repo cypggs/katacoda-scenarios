@@ -74,6 +74,8 @@ mount -vvv -t nfs localhost:/data/nfs_client /mnt`{{execute}}
 
 `wget https://raw.githubusercontent.com/cypggs/katacoda-scenarios/master/StorageClass-nfs.yaml && sed "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml |kubectl  apply -f - --record=true`{{execute}}
 
+`kubectl patch storageclass nfs-client -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'`{{execute}}
+
 `sed -i "s/NFS_IP/${HOST_IP}/g" StorageClass-nfs.yaml`{{execute}}
 ###安装ocp-spring-cloud系统
 `kubectl create ns ocp
