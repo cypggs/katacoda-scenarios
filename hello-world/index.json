@@ -1,12 +1,12 @@
 {
-  "title": "Hello World k8s",
-  "description": "k8s environment template from cypggs",
+  "title": "Hello World Scenario",
+  "description": "Your First Scenario",
   "difficulty": "beginner",
-  "time": "200 minutes",
+  "time": "2 minutes",
   "details": {
     "steps": [{
-       "title": "Step 1 - 检查 Kubernetes 集群",
-       "text": "step1.md"
+      "title": "Step 1 - Run Command",
+      "text": "step1.md"
     }],
     "intro": {
       "text": "intro.md",
@@ -21,6 +21,6 @@
     "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nStart Kubernetes using `launch.sh`\u001b[m\r\n"
   },
   "backend": {
-    "imageid": "kubernetes-cluster-running"
+    "imageid": "bash"
   }
 }

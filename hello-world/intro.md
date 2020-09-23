@@ -1,1 +1,1 @@
-Welcome to case first Katacoda Scenario!
+Welcome to your first Katacoda Scenario!
